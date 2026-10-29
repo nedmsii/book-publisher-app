@@ -55,7 +55,10 @@ REMOVE: Prisma (`prisma/`, `src/lib/prisma.ts`, package deps `@prisma/client`, `
 6. SES: DECISION Oct 28 — STAY IN SANDBOX, production access NOT needed. The form sends FROM noreply@araji.com (covered by verified DOMAIN araji.com, SendingEnabled=true) TO bonahid@araji.com (verified). Both sides satisfy sandbox rules; 200/day cap >> low form volume. Would only need production if we add an auto-reply TO the visitor (arbitrary unverified recipient) — not in scope. VDM still ENABLED (optional to disable for cost).
    GitHub account for Amplify: username nedmsii, email ned@themarketingscience.com.
    PDFs: use the current 5; remaining 5 to come later (owner).
-7. Deploy to Amplify, connect ibrahimaraji.com.
+7. Deploy to Amplify, connect ibrahimaraji.com. DEPLOY PREP DONE Oct 28 (commits 60965b1, 912b4fb): added amplify.yml (SSR build spec), DEPLOY.md (full step-by-step), scripts/upload-book-pdfs.ps1 (S3 upload). Fixed .gitignore so scripts/*.ps1 is tracked (root-only *.ps1 scratch ignore via /*.ps1 + !/scripts/*.ps1).
+   PRODUCTION BUILD VERIFIED: `npm run build` exits 0, 34 static pages generated, routes correct (no admin/auth). NOTE: must kill the dev server first — it locks .next\trace and causes EPERM (this is the "flaky build" issue; not a code problem). AWS SDK warns Node>=22 required for releases after ~Jan 2027; on Node 20 now — bump Amplify build image + local to Node 22 around then.
+   REMAINING OWNER STEPS before deploy: push repo to GitHub (nedmsii), create Amplify app + set 4 env vars + grant ses:SendEmail to the SSR compute role, run the S3 upload script + wire /books/* via CloudFront/Amplify rewrite, add ibrahimaraji.com domain. All detailed in DEPLOY.md.
+   Dev server is currently STOPPED (was terminal 4; killed for the clean build). Restart with `npm run dev` when previewing again.
 
 ## Environment notes
 - Windows/PowerShell. Refresh PATH in commands: `$env:PATH = [System.Environment]::GetEnvironmentVariable("PATH","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("PATH","User")`.
