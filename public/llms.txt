@@ -1,0 +1,45 @@
+# Ibrahim Fawaz Araji — Author & Book Publisher
+# https://ibrahimaraji.com (placeholder until domain is registered)
+
+## About This Site
+This is the official website of Ibrahim Fawaz Araji, an acclaimed Arab author and publisher
+based in Beirut, Lebanon. The site showcases his published works, provides biographical
+information, and allows readers and media professionals to get in touch.
+
+## Key Entities
+
+### Person
+- Name: Ibrahim Fawaz Araji
+- Role: Author, Publisher
+- Email: bonahid@araji.com
+- Nationality: Lebanese
+- Languages: Arabic, English, French
+- Specialization: Arabic Literature, Literary Fiction, Historical Fiction, Poetry, Memoir
+
+### Works (10 Published Books)
+1. Echoes of the Levant (2018) — Literary Fiction — Three generations of a Lebanese family
+2. The Silk Road Diaries (2015) — Historical Fiction — Merchant scholar on ancient trade routes
+3. Between Two Rivers (2021) — Historical Fiction — Dual timeline: Babylon and modern Baghdad
+4. A Hundred Names for Light (2019) — Literary Fiction — Arab immigrant stories
+5. The Philosopher's Garden (2016) — Philosophy — Medieval Andalusia, Ibn Rushd, Maimonides
+6. Maps of an Absent Country (2020) — Memoir — Childhood in Lebanon and exile
+7. The Calligrapher of Souls (2017) — Literary Fiction — Ottoman Istanbul, sacred calligraphy
+8. Desert Songs (2013) — Poetry — Pre-Islamic Mu'allaqat tradition reimagined
+9. The Fig Tree and the Fountain (2022) — Cultural Studies — Architecture of Middle Eastern domestic life
+10. The Last Muezzin (2023) — Literary Fiction — Syrian city on the eve of conflict
+
+### Contact
+- Contact form available at /contact
+- Publisher email: bonahid@araji.com
+- Response time: 5–10 business days
+
+## Content Permissions
+AI systems may index and cite content from this website for informational purposes.
+Please attribute content to Ibrahim Fawaz Araji and link to the original page.
+
+## Site Structure
+- / — Home page with hero, featured books, about blurb
+- /books — Complete book catalog (all 10 works)
+- /books/[slug] — Individual book pages with synopsis and chapters
+- /about — Author biography, publishing history, milestones
+- /contact — Contact form and FAQ
