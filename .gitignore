@@ -45,3 +45,6 @@ shell-test.txt
 
 # Local source material for book PDFs/bios (not served by the app; app serves from public/books/)
 /public/PDF_Books/
+
+# Book PDFs served locally; in production these live in S3 + CloudFront (see design.md)
+/public/books/*.pdf
