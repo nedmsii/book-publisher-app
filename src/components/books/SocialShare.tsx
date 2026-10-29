@@ -6,7 +6,7 @@ interface SocialShareProps {
   /** Pre-composed, already-localized share title (e.g. "Title by Author"). */
   shareTitle: string;
   shareLabel: string;
-  shareOn: (network: string) => string;
+  shareOn: string;
 }
 
 export default function SocialShare({ shareTitle, shareLabel, shareOn }: SocialShareProps) {
@@ -73,7 +73,7 @@ export default function SocialShare({ shareTitle, shareLabel, shareOn }: SocialS
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={shareOn(link.name)}
+          aria-label={shareOn.replace("{network}", link.name)}
           className={`inline-flex items-center justify-center w-9 h-9 rounded-full border border-ink-200 text-ink-500 transition-colors ${link.color}`}
         >
           {link.icon}

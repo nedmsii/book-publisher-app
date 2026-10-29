@@ -59,13 +59,12 @@ const en = {
     searchPlaceholder: "Search by title, genre, or keyword...",
     filterGenreLabel: "Filter by genre",
     allGenres: "All Genres",
-    showingAll: (count: number) => `Showing all ${count} books`,
-    showingSome: (shown: number, total: number) =>
-      `Showing ${shown} of ${total} books`,
+    showingAll: "Showing all {count} books",
+    showingSome: "Showing {shown} of {total} books",
     noResults: "No books found matching your search.",
     clearFilters: "Clear filters",
     readMore: "Read More",
-    readMoreAria: (title: string) => `Read more about ${title}`,
+    readMoreAria: "Read more about {title}",
     by: "by",
   },
   bookDetail: {
@@ -76,7 +75,7 @@ const en = {
     sampleNote:
       "* These are sample excerpts. Full chapter content will be available soon.",
     inquire: "Inquire About This Book",
-    moreIn: (genre: string) => `More in ${genre}`,
+    moreIn: "More in {genre}",
     fields: {
       author: "Author",
       genre: "Genre",
@@ -84,9 +83,8 @@ const en = {
       isbn: "ISBN",
     },
     share: "Share:",
-    shareOn: (network: string) => `Share on ${network}`,
-    coverAlt: (title: string, author: string) =>
-      `Cover of ${title} by ${author}`,
+    shareOn: "Share on {network}",
+    coverAlt: "Cover of {title} by {author}",
   },
   about: {
     eyebrow: "The Author",
@@ -211,8 +209,7 @@ const en = {
     aboutTheAuthor: "About the Author",
     genresHeading: "Genres",
     footerNav: "Footer navigation",
-    rights: (year: number) =>
-      `© ${year} Ibrahim Fawaz Araji. All rights reserved.`,
+    rights: "© {year} Ibrahim Fawaz Araji. All rights reserved.",
     builtWith: "Built with Next.js · Hosted on AWS",
   },
   breadcrumb: {

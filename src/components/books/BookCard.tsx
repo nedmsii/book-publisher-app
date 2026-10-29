@@ -14,7 +14,9 @@ interface BookCardProps {
 export default function BookCard({ book, lang, dict, priority = false }: BookCardProps) {
   const href = localizedPath(lang, `/books/${book.slug}`);
   const title = book.title[lang];
-  const coverAlt = dict.bookDetail.coverAlt(title, book.author[lang]);
+  const coverAlt = dict.bookDetail.coverAlt
+    .replace("{title}", title)
+    .replace("{author}", book.author[lang]);
 
   return (
     <article className="group bg-white rounded-lg overflow-hidden shadow-sm border border-ink-100 hover:shadow-md transition-shadow">
@@ -62,7 +64,7 @@ export default function BookCard({ book, lang, dict, priority = false }: BookCar
         <Link
           href={href}
           className="inline-flex items-center gap-1 text-brand-600 hover:text-brand-700 text-sm font-semibold transition-colors"
-          aria-label={dict.books.readMoreAria(title)}
+          aria-label={dict.books.readMoreAria.replace("{title}", title)}
         >
           {dict.books.readMore}
           <svg className="w-3 h-3 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

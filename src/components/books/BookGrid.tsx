@@ -100,8 +100,10 @@ export default function BookGrid({ books, lang, dict }: BookGridProps) {
       {/* Results count */}
       <p className="text-sm text-ink-400 mb-6" aria-live="polite">
         {filtered.length === books.length
-          ? dict.books.showingAll(books.length)
-          : dict.books.showingSome(filtered.length, books.length)}
+          ? dict.books.showingAll.replace("{count}", String(books.length))
+          : dict.books.showingSome
+              .replace("{shown}", String(filtered.length))
+              .replace("{total}", String(books.length))}
       </p>
 
       {/* Grid */}

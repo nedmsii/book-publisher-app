@@ -61,13 +61,12 @@ const ar: Dictionary = {
     searchPlaceholder: "ابحث بالعنوان أو النوع أو الكلمة المفتاحية...",
     filterGenreLabel: "تصفية حسب النوع",
     allGenres: "جميع الأنواع",
-    showingAll: (count: number) => `عرض جميع الكتب البالغ عددها ${count}`,
-    showingSome: (shown: number, total: number) =>
-      `عرض ${shown} من أصل ${total} كتاباً`,
+    showingAll: "عرض جميع الكتب البالغ عددها {count}",
+    showingSome: "عرض {shown} من أصل {total} كتاباً",
     noResults: "لم يُعثر على كتب تطابق بحثك.",
     clearFilters: "مسح عوامل التصفية",
     readMore: "اقرأ المزيد",
-    readMoreAria: (title: string) => `اقرأ المزيد عن ${title}`,
+    readMoreAria: "اقرأ المزيد عن {title}",
     by: "بقلم",
   },
   bookDetail: {
@@ -78,7 +77,7 @@ const ar: Dictionary = {
     sampleNote:
       "* هذه مقتطفات تجريبية. سيتوفّر المحتوى الكامل للفصول قريباً.",
     inquire: "استفسر عن هذا الكتاب",
-    moreIn: (genre: string) => `المزيد في ${genre}`,
+    moreIn: "المزيد في {genre}",
     fields: {
       author: "الكاتب",
       genre: "النوع",
@@ -86,8 +85,8 @@ const ar: Dictionary = {
       isbn: "الرقم الدولي",
     },
     share: "شارك:",
-    shareOn: (network: string) => `المشاركة عبر ${network}`,
-    coverAlt: (title: string, author: string) => `غلاف ${title} بقلم ${author}`,
+    shareOn: "المشاركة عبر {network}",
+    coverAlt: "غلاف {title} بقلم {author}",
   },
   about: {
     eyebrow: "الكاتب",
@@ -211,8 +210,7 @@ const ar: Dictionary = {
     aboutTheAuthor: "عن الكاتب",
     genresHeading: "الأنواع",
     footerNav: "تنقل التذييل",
-    rights: (year: number) =>
-      `© ${year} إبراهيم فواز عراجي. جميع الحقوق محفوظة.`,
+    rights: "© {year} إبراهيم فواز عراجي. جميع الحقوق محفوظة.",
     builtWith: "مبني بـ Next.js · مُستضاف على AWS",
   },
   breadcrumb: {

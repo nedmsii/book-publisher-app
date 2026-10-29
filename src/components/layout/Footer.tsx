@@ -89,7 +89,7 @@ export default function Footer({ lang, dict }: FooterProps) {
         </div>
 
         <div className="border-t border-ink-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-ink-500">{dict.footer.rights(currentYear)}</p>
+          <p className="text-xs text-ink-500">{dict.footer.rights.replace("{year}", String(currentYear))}</p>
           <p className="text-xs text-ink-600">{dict.footer.builtWith}</p>
         </div>
       </div>

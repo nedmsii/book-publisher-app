@@ -92,7 +92,9 @@ export default function BookDetailPage({ params }: Props) {
             <div className="relative aspect-[2/3] bg-ink-100 rounded-lg overflow-hidden shadow-lg max-w-xs mx-auto lg:max-w-none">
               <Image
                 src={book.coverImage}
-                alt={dict.bookDetail.coverAlt(title, author)}
+                alt={dict.bookDetail.coverAlt
+                  .replace("{title}", title)
+                  .replace("{author}", author)}
                 fill
                 className="object-cover"
                 priority
@@ -237,7 +239,7 @@ export default function BookDetailPage({ params }: Props) {
               id="related-heading"
               className="font-serif text-2xl font-bold text-ink-900 mb-8"
             >
-              {dict.bookDetail.moreIn(genreLabel)}
+              {dict.bookDetail.moreIn.replace("{genre}", genreLabel)}
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
               {related.map((b) => (
