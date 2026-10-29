@@ -12,6 +12,7 @@ function isExcludedPath(pathname: string): boolean {
     pathname === "/robots.txt" ||
     pathname === "/favicon.ico" ||
     pathname.startsWith("/images/") ||
+    pathname.startsWith("/books/") ||
     pathname.startsWith("/og/")
   );
 }

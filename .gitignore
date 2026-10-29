@@ -42,3 +42,6 @@ next-env.d.ts
 del-marker.txt
 buildlog.txt
 shell-test.txt
+
+# Local source material for book PDFs/bios (not served by the app; app serves from public/books/)
+/public/PDF_Books/
