@@ -51,8 +51,10 @@ REMOVE: Prisma (`prisma/`, `src/lib/prisma.ts`, package deps `@prisma/client`, `
    (b) Static PDFs under public/books/ 404'd because src/middleware.ts rewrote non-/en paths to /ar. Fixed by adding `pathname.startsWith("/books/")` to isExcludedPath (alongside /images/). Any NEW top-level public/ asset dir must be added to isExcludedPath too.
    BUG (c) fixed Oct 28, commit e4da705: NO root src/app/layout.tsx existed (only src/app/[lang]/layout.tsx). App Router REQUIRES a root layout; without it the top-level src/app/not-found.tsx (used for unmatched routes) 500'd with "not-found.tsx doesn't have a root layout", cascading 500s to all pages. Fixed by adding a pass-through root layout (returns children) — the [lang] layout and not-found/global-error render their own html/body. This is the 3rd runtime bug tsc could not catch. Do NOT delete src/app/layout.tsx. NOTE: the "Next.js is outdated" banner the user saw was the dev overlay mislabeling this runtime error — real cause was the missing root layout.
    Windows/dev-server note: `npm run dev` child node process can orphan and hold the port after the managed shell "exits"; restarting then drifts to 3001/3002. If that happens, kill the node PIDs on those ports (Get-NetTCPConnection -State Listen -LocalPort 3000,3001,3002 → Stop-Process) then start one fresh. Current clean server = terminal 4 on :3000.
-5. Update `.kiro/specs/tasks.md` + `design.md` for v2.1 (no-DB) architecture.
-6. SES: request production access in console (user action); optionally disable VDM.
+5. (DONE Oct 28, commit 34cc73e) Rewrote all 3 spec docs (requirements/design/tasks) to v2.1 (no DB, no admin, SES-only, Amplify). Also untracked the 5 book PDFs from git (still on disk, gitignored via /public/books/*.pdf) — they go to S3+CloudFront in prod per design.md.
+6. SES: DECISION Oct 28 — STAY IN SANDBOX, production access NOT needed. The form sends FROM noreply@araji.com (covered by verified DOMAIN araji.com, SendingEnabled=true) TO bonahid@araji.com (verified). Both sides satisfy sandbox rules; 200/day cap >> low form volume. Would only need production if we add an auto-reply TO the visitor (arbitrary unverified recipient) — not in scope. VDM still ENABLED (optional to disable for cost).
+   GitHub account for Amplify: username nedmsii, email ned@themarketingscience.com.
+   PDFs: use the current 5; remaining 5 to come later (owner).
 7. Deploy to Amplify, connect ibrahimaraji.com.
 
 ## Environment notes
