@@ -12,7 +12,10 @@ function isExcludedPath(pathname: string): boolean {
     pathname === "/robots.txt" ||
     pathname === "/favicon.ico" ||
     pathname.startsWith("/images/") ||
-    pathname.startsWith("/books/") ||
+    // Only the PDF files under /books/ are static assets (served via the Amplify
+    // rewrite → CloudFront). Book *pages* live at /books/<slug> (Arabic) and must
+    // still go through the locale rewrite, so do NOT exclude all of /books/.
+    (pathname.startsWith("/books/") && pathname.endsWith(".pdf")) ||
     pathname.startsWith("/og/")
   );
 }
