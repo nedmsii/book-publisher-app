@@ -220,10 +220,13 @@ Configured in Amplify (and `.env.local` for dev):
 
 ```bash
 SITE_URL="https://ibrahimaraji.com"      # base URL for canonical/sitemap/robots/JSON-LD
-AWS_REGION="us-east-1"
 SES_FROM_EMAIL="noreply@araji.com"
 ADMIN_NOTIFICATION_EMAIL="bonahid@araji.com"
 ```
+
+> **Amplify note:** do NOT set `AWS_REGION` in Amplify — it rejects variables starting
+> with the reserved `AWS` prefix. Lambda provides `AWS_REGION` at runtime; `ses.ts`
+> also falls back to `"us-east-1"`. (`.env.local` for local dev may still set it.)
 
 > Removed: `DATABASE_URL`, `NEXTAUTH_URL`, `NEXTAUTH_SECRET`, `AWS_ACCESS_KEY_ID`,
 > `AWS_SECRET_ACCESS_KEY` (Amplify provides role credentials at runtime). `NEXTAUTH_URL`

@@ -30,10 +30,12 @@ to S3 in step 3.)
 - **Environment variables** (Amplify → App settings → Environment variables):
   ```
   SITE_URL=https://ibrahimaraji.com
-  AWS_REGION=us-east-1
   SES_FROM_EMAIL=noreply@araji.com
   ADMIN_NOTIFICATION_EMAIL=bonahid@araji.com
   ```
+  > Do NOT set `AWS_REGION` — Amplify rejects any variable starting with `AWS`
+  > (reserved prefix). The Lambda runtime provides `AWS_REGION` automatically, and
+  > `ses.ts` falls back to `"us-east-1"` regardless.
 - **SES permissions:** the Amplify SSR compute role needs `ses:SendEmail`. Attach a
   policy allowing `ses:SendEmail` / `ses:SendRawEmail` (optionally scoped to the
   verified identities) to the app's compute/execution role.
