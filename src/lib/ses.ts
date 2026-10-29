@@ -1,7 +1,14 @@
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
+import { fromNodeProviderChain } from "@aws-sdk/credential-providers";
 
+// On AWS Amplify's Next.js SSR (Compute) runtime, the SDK's implicit default
+// credential resolution can fail with "Could not load credentials from any
+// providers". Explicitly using the node provider chain resolves the container
+// role credentials that Amplify injects (AWS_CONTAINER_CREDENTIALS_* env vars),
+// while still falling back to env/instance creds locally.
 const sesClient = new SESClient({
   region: process.env.AWS_REGION ?? "us-east-1",
+  credentials: fromNodeProviderChain(),
 });
 
 interface ContactNotificationData {
