@@ -113,9 +113,13 @@ export default function BookDetailPage({ params }: Props) {
                 {[
                   { term: dict.bookDetail.fields.author, def: author },
                   { term: dict.bookDetail.fields.genre, def: genreLabel },
-                  ...(book.publishedYear > 0
-                    ? [{ term: dict.bookDetail.fields.published, def: String(book.publishedYear) }]
-                    : []),
+                  {
+                    term: dict.bookDetail.fields.published,
+                    def:
+                      book.publishedYear > 0
+                        ? String(book.publishedYear)
+                        : dict.bookDetail.dateComingSoon,
+                  },
                   ...(book.isbn ? [{ term: dict.bookDetail.fields.isbn, def: book.isbn }] : []),
                 ].map(({ term, def }) => (
                   <div key={term} className="flex items-start gap-2 py-1.5 border-b border-ink-100 last:border-0">
@@ -148,6 +152,30 @@ export default function BookDetailPage({ params }: Props) {
             <div className="prose prose-ink max-w-none mb-8">
               <h2 className="font-serif text-xl font-bold text-ink-800 mb-3">{dict.bookDetail.aboutThisBook}</h2>
               <p className="text-ink-600 leading-relaxed text-lg">{book.synopsis[lang]}</p>
+            </div>
+
+            {/* Read / download the full book */}
+            <div className="mb-8">
+              {book.contentUrl ? (
+                <a
+                  href={book.contentUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white font-semibold px-6 py-3 rounded transition-colors"
+                >
+                  {dict.bookDetail.readOnline}
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </a>
+              ) : (
+                <span
+                  className="inline-flex items-center gap-2 bg-ink-100 text-ink-400 font-semibold px-6 py-3 rounded cursor-not-allowed"
+                  aria-disabled="true"
+                >
+                  {dict.bookDetail.bookComingSoon}
+                </span>
+              )}
             </div>
 
             {/* Chapter listing */}

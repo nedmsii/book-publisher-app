@@ -70,6 +70,8 @@ const en = {
   },
   bookDetail: {
     aboutThisBook: "About This Book",
+    dateComingSoon: "Publication date coming soon",
+    bookComingSoon: "Full book coming soon",
     readOnline: "Read Online — Chapters",
     sampleNote:
       "* These are sample excerpts. Full chapter content will be available soon.",
@@ -95,7 +97,7 @@ const en = {
     photoNote: "",
     contactLabel: "Contact",
     bio: [
-      "Ibrahim Fawaz Araji was born in the town of Brital, in the Bekaa region of Lebanon, to parents devoted to faith and belief. He received his primary and intermediate education in his hometown of Brital, his secondary education at the Al-Maqasid Islamic School in Sidon, and graduated from the Evangelical Secondary School in Zahle in 1967.",
+      "Ibrahim Fawaz Araji was born in the town of Bar Elias, in the Bekaa region of Lebanon, to parents devoted to faith and belief. He received his primary and intermediate education in his hometown of Bar Elias, his secondary education at the Al-Maqasid Islamic School in Sidon, and graduated from the Evangelical Secondary School in Zahle in 1967.",
       "He pursued his university studies at Beirut Arab University, earning a Licence (BA) in Arabic Language and Literature with distinction in 1975. When the circumstances of the Lebanese civil war prevented him from continuing his graduate studies, he devoted himself to the study of the Holy Qur'an and its various schools of exegesis. He was drawn to the modern sciences and scientific discoveries — from the landing of man on the moon to the affairs of the cosmos and space.",
       "Araji was influenced by the great scholar Dr. Ahmad Zaki, and studied the religious sciences under the distinguished Sheikh Dr. Muhammad Mutawalli Al-Sha'rawi, whose accessible style, scholarly method, and reasoning through logic and proof shaped him deeply; he studied Al-Sha'rawi's more than twenty works. This path led him to preaching and guidance in several mosques, where he delivered more than one hundred sermons on topics including women in Islam, human rights, family affairs, and Islamic upbringing.",
       "During this period, he devoted himself over three years to writing his first book, The Qur'an and the Modern Sciences, drawing on his practical experience and his scientific and religious study. The book reached the library of McGill University in Montreal, Canada, becoming a reference in its department of Arabic and Islamic studies. In his works he also drew on the scholarship of Professor Zaghloul El-Naggar in the scientific miracles of the Qur'an and Sunnah, and of Dr. Omar Abdul-Kafi.",

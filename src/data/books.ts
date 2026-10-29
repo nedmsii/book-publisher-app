@@ -15,8 +15,9 @@ const GENRE = {
 // - sortOrder reflects the TRUE publication order (1 = oldest, 10 = newest),
 //   per the author's own back-cover listing.
 // - The site displays books NEWEST → OLDEST (see getBooksForDisplay).
-// - publishedYear is 0 where the exact year is not yet confirmed; the UI hides
-//   the year when it is 0. Confirmed: book 1 (1998) and "My Village" (2014).
+// - publishedYear is 0 where the exact year is not yet confirmed; the UI shows
+//   a "coming soon" label when it is 0. Confirmed: book 1 (1998) and
+//   "My Village" (2014).
 //   Real years + full summaries will be supplied by the publisher later.
 // - synopsis values are concise, factual placeholders based on each title and
 //   publisher; they will be replaced with the author's official summaries.
@@ -87,6 +88,7 @@ export const books: Book[] = [
     genre: "Memoir",
     genreLabel: GENRE.memoir,
     isbn: "",
+    contentUrl: "/books/my-village-memory-and-longing.pdf",
     featured: false,
     sortOrder: 4,
   },
@@ -121,6 +123,7 @@ export const books: Book[] = [
     genre: "Spirituality",
     genreLabel: GENRE.spirituality,
     isbn: "",
+    contentUrl: "/books/the-true-promise.pdf",
     featured: false,
     sortOrder: 6,
   },
@@ -138,6 +141,7 @@ export const books: Book[] = [
     genre: "Islamic Thought",
     genreLabel: GENRE.islamicThought,
     isbn: "",
+    contentUrl: "/books/in-the-embrace-of-islam.pdf",
     featured: false,
     sortOrder: 7,
   },
@@ -155,6 +159,7 @@ export const books: Book[] = [
     genre: "Memoir",
     genreLabel: GENRE.memoir,
     isbn: "",
+    contentUrl: "/books/diary-of-time-my-memories.pdf",
     featured: false,
     sortOrder: 8,
   },
@@ -172,6 +177,7 @@ export const books: Book[] = [
     genre: "Spirituality",
     genreLabel: GENRE.spirituality,
     isbn: "",
+    contentUrl: "/books/diary-of-a-muslim.pdf",
     featured: false,
     sortOrder: 9,
   },

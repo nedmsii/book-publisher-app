@@ -47,9 +47,9 @@ export default function BookCard({ book, lang, dict, priority = false }: BookCar
       </Link>
 
       <div className="p-4">
-        {book.publishedYear > 0 && (
-          <p className="text-xs text-ink-400 mb-1">{book.publishedYear}</p>
-        )}
+        <p className="text-xs text-ink-400 mb-1">
+          {book.publishedYear > 0 ? book.publishedYear : dict.bookDetail.dateComingSoon}
+        </p>
         <h3 className="font-serif font-bold text-ink-900 text-base leading-tight mb-1">
           <Link href={href} className="hover:text-brand-600 transition-colors">
             {title}
