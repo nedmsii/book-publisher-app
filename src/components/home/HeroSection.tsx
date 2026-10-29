@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Dictionary } from "@/i18n";
 import { localizedPath, type Locale } from "@/i18n/config";
+import { getBooksForDisplay } from "@/data/books";
 
 interface HeroSectionProps {
   lang: Locale;
@@ -8,6 +10,9 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ lang, dict }: HeroSectionProps) {
+  // Three most recent books (getBooksForDisplay is newest → oldest). The newest
+  // sits in front of the fanned stack.
+  const recent = getBooksForDisplay().slice(0, 3);
   return (
     <section
       className="relative bg-ink-950 text-white overflow-hidden"
@@ -60,16 +65,40 @@ export default function HeroSection({ lang, dict }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Decorative element */}
+        {/* Fanned stack of the three most recent book covers (newest in front) */}
         <div
-          className="absolute end-8 top-1/2 -translate-y-1/2 hidden lg:block opacity-10"
+          className="absolute end-12 top-1/2 -translate-y-1/2 hidden lg:block"
           aria-hidden="true"
         >
-          <svg width="200" height="300" viewBox="0 0 200 300" fill="none">
-            <rect x="10" y="10" width="120" height="160" rx="4" fill="#db8c28" />
-            <rect x="40" y="50" width="120" height="160" rx="4" fill="#db8c28" />
-            <rect x="70" y="90" width="120" height="160" rx="4" fill="#db8c28" />
-          </svg>
+          <div className="relative w-[320px] h-[320px]">
+            {recent.map((book, i) => {
+              // i = 0 is newest. Newest gets the highest z-index so it sits in front.
+              const depth = recent.length - 1 - i;
+              const offset = i * 44; // horizontal shift per layer, in px
+              const rotations = ["-rotate-6", "-rotate-2", "rotate-3"];
+              return (
+                <div
+                  key={book.id}
+                  className={`absolute top-0 ${rotations[i] ?? ""} rounded-lg overflow-hidden shadow-2xl ring-1 ring-black/10`}
+                  style={{
+                    insetInlineEnd: `${offset}px`,
+                    zIndex: depth + 1,
+                    width: 210,
+                    height: 300,
+                  }}
+                >
+                  <Image
+                    src={book.coverImage}
+                    alt=""
+                    width={210}
+                    height={300}
+                    className="w-full h-full object-cover"
+                    priority={i === 0}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
