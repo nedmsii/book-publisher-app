@@ -36,9 +36,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# build / debug logs (local scratch, not source)
+# build / debug logs and local scratch scripts (not source)
 *.log
-build-check.ps1
-detached-build.ps1
+*.ps1
 del-marker.txt
 buildlog.txt
+shell-test.txt
