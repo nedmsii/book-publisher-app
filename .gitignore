@@ -38,10 +38,12 @@ next-env.d.ts
 
 # build / debug logs and local scratch scripts (not source)
 *.log
-*.ps1
+/*.ps1
 del-marker.txt
 buildlog.txt
 shell-test.txt
+# ...but keep real tooling scripts under scripts/
+!/scripts/*.ps1
 
 # Local source material for book PDFs/bios (not served by the app; app serves from public/books/)
 /public/PDF_Books/
