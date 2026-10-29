@@ -11,6 +11,8 @@ function isExcludedPath(pathname: string): boolean {
     pathname === "/sitemap.xml" ||
     pathname === "/robots.txt" ||
     pathname === "/favicon.ico" ||
+    pathname === "/icon.png" ||
+    pathname === "/apple-icon.png" ||
     pathname.startsWith("/images/") ||
     // Only the PDF files under /books/ are static assets (served via the Amplify
     // rewrite → CloudFront). Book *pages* live at /books/<slug> (Arabic) and must
