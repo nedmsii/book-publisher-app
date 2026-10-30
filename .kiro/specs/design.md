@@ -234,14 +234,27 @@ ADMIN_NOTIFICATION_EMAIL="bonahid@araji.com"
 
 ---
 
-## 9. Deployment (AWS Amplify)
+## 9. Deployment (AWS Amplify) — as deployed Oct 29, 2026
 
-1. Push the repo to a Git provider (GitHub) that Amplify can connect to.
-2. Create an Amplify app from the repo; Amplify auto-detects Next.js SSR.
-3. Set the env vars from §8 in the Amplify console.
-4. Upload book PDFs to S3 and serve at `/books/*.pdf` via CloudFront (they are
-   gitignored, not in the repo).
-5. Connect the custom domain `ibrahimaraji.com` (Route 53); Amplify provisions ACM.
-6. Request SES production access so the contact form can email arbitrary senders'
-   notifications to the owner (notifications go TO the verified owner address, so
-   sandbox already works for the owner, but production access removes sandbox limits).
+1. Repo on GitHub (`nedmsii/book-publisher-app`); Amplify app `d1ek00pa1xp96o` builds `main`
+   automatically on push using `amplify.yml`.
+2. Env vars from §8 set in the Amplify console (no `AWS_*` names).
+3. **Compute role:** the app's `computeRoleArn` is set to the Amplify SSR role, which carries an
+   inline policy allowing `ses:SendEmail`/`ses:SendRawEmail` on the two verified identities and on
+   `configuration-set/*`. Without a compute role the SSR function has no AWS credentials at all.
+4. **PDFs:** private S3 bucket `ibrahimaraji-book-pdfs` → CloudFront with Origin Access Control.
+   An Amplify rewrite forwards `/books/<*>.pdf` to CloudFront. It must stay `.pdf`-only so Arabic
+   book pages (`/books/<slug>`) still reach the app.
+5. **Domain:** `ibrahimaraji.com` + `www` via Route 53; ACM certificate managed by Amplify.
+6. **SES:** stays in sandbox by design. The form only sends to the verified owner address, so
+   production access isn't needed unless we add auto-replies to visitors.
+
+## 10. Branding & social sharing
+
+- Open Graph / Twitter card: `public/og/og-default.jpg` (1200×630), set in `[lang]/layout.tsx`.
+  The card image is English-only (System.Drawing can't shape Arabic); title/description are localized.
+- Book pages use their cover as the OG image.
+- Favicons: `public/favicon.ico`, `public/icon.png` (512), `public/apple-icon.png` (180).
+- Hero shows the three newest covers (`getBooksForDisplay().slice(0, 3)`), newest in front.
+- About portrait: `public/images/publisher/Ibrahim_Araji_2.jpeg`.
+- Generators: `scripts/make-og-image.ps1`, `scripts/make-favicons.ps1`.

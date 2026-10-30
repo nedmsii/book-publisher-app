@@ -79,7 +79,7 @@ export default function AboutPage({ params }: { params: { lang: string } }) {
           <div className="lg:col-span-1">
             <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg bg-ink-100">
               <Image
-                src="/images/publisher/ibrahim-fawaz-araji.jpg"
+                src="/images/publisher/Ibrahim_Araji_2.jpeg"
                 alt={`${dict.about.photoName} — ${dict.about.photoRole}`}
                 fill
                 priority
