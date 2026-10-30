@@ -7,7 +7,10 @@ $ErrorActionPreference = "Stop"
 Add-Type -AssemblyName System.Drawing
 
 $root = Split-Path $PSScriptRoot -Parent
-$srcPhoto = Join-Path $root "public\images\publisher\ibrahim-fawaz-araji-speaking.jpg"
+$srcPhoto = Join-Path $root "public\images\publisher\Ibrahim_Araji_2.jpeg"
+# Face-centred square crop in the 777x1280 source (head ~y180-800, x~100-560),
+# so the face fills the icon and stays recognisable at 16px.
+$cropX = 30; $cropY = 190; $cropSide = 600
 $pub = Join-Path $root "public"
 $brand = [System.Drawing.Color]::FromArgb(255, 60, 30, 11)   # #3c1e0b
 $ring  = [System.Drawing.Color]::FromArgb(255, 219, 140, 40) # #db8c28
@@ -20,10 +23,10 @@ function New-Icon([int]$size, [string]$outPath) {
     $g.Clear($brand)
 
     $photo = [System.Drawing.Image]::FromFile($srcPhoto)
-    # centered square crop, biased up toward the face
-    $side = [Math]::Min($photo.Width, $photo.Height)
-    $sx = [int](($photo.Width - $side) / 2)
-    $sy = [int](($photo.Height - $side) / 6)
+    # explicit face-centred square crop
+    $side = $cropSide
+    $sx = $cropX
+    $sy = $cropY
     $inset = [int]($size * 0.08)
     $d = $size - 2 * $inset
     $path = New-Object System.Drawing.Drawing2D.GraphicsPath

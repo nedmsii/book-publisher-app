@@ -3,6 +3,10 @@ frontend:
   phases:
     preBuild:
       commands:
+        # Pin Node 22 (AWS SDK v3 releases after ~Jan 2027 require Node >= 22).
+        - nvm install 22
+        - nvm use 22
+        - node -v
         - npm ci
     build:
       commands:
