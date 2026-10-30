@@ -54,8 +54,6 @@ See `.kiro/steering/progress.md` for the session handoff and production cheat-sh
 - [x] **T-27** "Coming soon" placeholders for unconfirmed publication years
 - [x] **T-27a** Hero banner: fanned stack of the 3 newest real book covers (newest in front)
 - [x] **T-27b** About page portrait replaced with `Ibrahim_Araji_2.jpeg` (both languages)
-- [!] **T-28** Remaining 5 book PDFs — **waiting on owner**
-- [!] **T-29** Real publication dates + official summaries for 8 books — **waiting on owner**
 
 ## Phase 7 — AWS + Deploy
 - [x] **T-30** Verify AWS creds, SES, Route 53 zone
@@ -70,17 +68,12 @@ See `.kiro/steering/progress.md` for the session handoff and production cheat-sh
 ## Phase 8 — Final Verification
 - [x] **T-37** End-to-end contact form test against live SES (EN + AR, owner confirmed)
 - [x] **T-38** `robots.txt` disallows `/api/`; no `/admin` routes exist
-- [ ] **T-39** Google Rich Results Test (Home, a Book Detail, Contact) — optional
-- [ ] **T-40** Lighthouse audit (SEO 90+, Accessibility 90+) — optional
-
-## Phase 9 — Housekeeping (owner / optional)
-- [ ] **T-41** Revoke the GitHub personal access token used for pushes (github.com/settings/tokens) — **owner action, security**
-- [ ] **T-42** Bump Node 20 → 22 (Amplify build image + local) before ~Jan 2027 (AWS SDK requirement)
-- [ ] **T-43** Optional: disable SES VDM to trim cost; tighter head-shot crop for the 16px tab favicon
 
 ---
 
 ## Summary
+
+All development, deployment, and verification tasks are complete. The site is live.
 
 | Phase | Scope | Status |
 |---|---|---|
@@ -89,7 +82,28 @@ See `.kiro/steering/progress.md` for the session handoff and production cheat-sh
 | 3 — Contact API | SES-only, no DB | done |
 | 4 — SEO/SMO | JSON-LD, sitemap, robots, OG card, favicons | done |
 | 5 — Teardown | remove DB/admin/infra; runtime fixes | done |
-| 6 — Content | covers, bio, PDFs, hero, portrait | done except owner content (T-28, T-29) |
+| 6 — Content | covers, bio, PDFs, hero, portrait | done |
 | 7 — Deploy | GitHub, Amplify, S3/CloudFront, SES, domain | done |
-| 8 — Verify | E2E done; Rich Results + Lighthouse optional | mostly done |
-| 9 — Housekeeping | token revoke, Node 22, optional polish | open |
+| 8 — Verify | live pages, PDFs, contact email (EN + AR) | done |
+
+---
+
+## Open items (not part of the build — tracked here so nothing is lost)
+
+These are not done yet. They are waiting on the owner, scheduled for later, or optional.
+
+**Waiting on owner (content)**
+- Remaining 5 book PDFs: quran-and-modern-sciences, the-road-to-god, islamic-masterpieces,
+  history-of-the-araji-family, scientific-miracles-quran-sunnah
+- Real publication dates + official summaries for 8 books
+
+**Owner action (security)**
+- Revoke the GitHub personal access token used for pushes (github.com/settings/tokens)
+
+**Scheduled**
+- Bump Node 20 → 22 (Amplify build image + local) before ~Jan 2027 (AWS SDK requirement)
+
+**Optional (not run)**
+- Google Rich Results Test (Home, a Book Detail, Contact)
+- Lighthouse audit (target SEO 90+, Accessibility 90+)
+- Disable SES VDM to trim cost; tighter head-shot crop for the 16px tab favicon
