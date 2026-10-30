@@ -57,10 +57,14 @@ No database, no admin portal, no CMS. Content lives in code: `src/data/books.ts`
 
 ## Recent changes (Oct 29)
 - Share card + favicons, hero fanned book covers, About portrait now `Ibrahim_Araji_2.jpeg`.
+- Node 22 on Amplify, verified (build job 11 log: node v22.23.4, 34/34 pages). Local is still Node 20.
+- Favicons now a face-centred crop of `Ibrahim_Araji_2.jpeg`.
+- SES VDM disabled (account level). Sending unaffected.
+- JSON-LD verified valid on all page types (`scripts/check-jsonld.ps1`).
 
 ## Open items
 - Owner content: remaining 5 PDFs (quran-and-modern-sciences, the-road-to-god, islamic-masterpieces,
   history-of-the-araji-family, scientific-miracles-quran-sunnah) + real dates/summaries for 8 books.
 - Owner security: revoke the GitHub PAT.
-- Before ~Jan 2027: bump Node 20 → 22 (Amplify + local).
-- Optional: Rich Results + Lighthouse audits, disable SES VDM, tighter tab favicon crop.
+- Optional: Lighthouse via https://pagespeed.web.dev (local Lighthouse fails in this terminal; keyless
+  PageSpeed API returns 429). Optional: install Node 22 locally.

@@ -100,10 +100,22 @@ These are not done yet. They are waiting on the owner, scheduled for later, or o
 **Owner action (security)**
 - Revoke the GitHub personal access token used for pushes (github.com/settings/tokens)
 
-**Scheduled**
-- Bump Node 20 → 22 (Amplify build image + local) before ~Jan 2027 (AWS SDK requirement)
+**Your machine (optional)**
+- Install Node 22 locally (nvm-windows or the nodejs.org installer). The live site already builds on
+  Node 22 via `amplify.yml`; local Node only matters for building on your computer.
 
-**Optional (not run)**
-- Google Rich Results Test (Home, a Book Detail, Contact)
-- Lighthouse audit (target SEO 90+, Accessibility 90+)
-- Disable SES VDM to trim cost; tighter head-shot crop for the 16px tab favicon
+**Optional (owner, 1 minute in a browser)**
+- Lighthouse audit: open https://pagespeed.web.dev, enter https://www.ibrahimaraji.com/en, Analyze.
+  Target SEO 90+, Accessibility 90+. (Couldn't be run from the dev machine: local Lighthouse
+  kept failing in this terminal and Google's keyless API returned HTTP 429.)
+
+---
+
+## Completed Oct 29–30 (follow-up)
+- [x] Node 22 on Amplify, verified in build log (job 11): "Now using node v22.23.4", compiled, 34/34 pages
+      (`amplify.yml` runs `nvm install 22` / `nvm use 22`; `.nvmrc` = 22)
+- [x] Structured data checked on 7 live pages: all 15 JSON-LD blocks valid Schema.org
+      (WebSite, Organization, CollectionPage, Book, BreadcrumbList, Person, ContactPage, FAQPage).
+      Re-run anytime: `scripts/check-jsonld.ps1`
+- [x] SES VDM disabled (stops per-email analytics charge; sending unaffected)
+- [x] Favicons regenerated with a face-centred crop of `Ibrahim_Araji_2.jpeg`
